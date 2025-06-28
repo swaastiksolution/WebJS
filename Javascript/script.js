@@ -112,38 +112,6 @@ document.body.appendChild(img);
 // 2. document.getElementsByTagName(name)
 // 3. document.getElementsByClassName(name)
 
-//Changing HTML elements
-//Properties: 
-// 1. element.innerHTML =  new html content	  -  Change the inner HTML of an element
-// 2. element.attribute = new value	  -  Change the attribute value of an HTML element
-// 3. element.style.property = new style  -  Change the style of an HTML element
-
-//Method:
-// 1. element.setAttribute(attribute, value)	Change the attribute value of an HTML element
-
-//Adding and Deleting Elements:
-// 1. document.createElement(element)	Create an HTML element
-// 2. document.removeChild(element)	Remove an HTML element
-// 3. document.appendChild(element)	Add an HTML element
-// 4. document.replaceChild(new, old)	Replace an HTML element
-// 5. document.write(text)	Write into the HTML output stream
-
-//To change Style of Html: document.getElementById(id).style.property = new style
-
-//DOM Events:  When we react to element the DOM event occurs. Example: onClick()
-<script>
-    document.getElementById("myBtn").onclick = displayDate;
-</script>
-
-//DOM Event Listener: addEventListener()
-//Syntax - element.addEventListener(event, function, useCapture);
-//Example: 
-document.getElementById("myBtn").addEventListener("click", displayDate);
-
-element.addEventListener("mouseover", myFunction);
-element.addEventListener("click", mySecondFunction);
-element.addEventListener("mouseout", myThirdFunction);
-element.removeEventListener("mousemove", myFunction); //....and more
 
 
 {/* EXERCISE */}

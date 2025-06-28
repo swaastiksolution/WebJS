@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Canvas</p>
+    <script>
+        var canvas = document.createElement('canvas');
+        canvas.height = 500;
+        canvas.width = 500;
+        canvas.border = '2px solid #ccc';
+        canvas.style.backgroundColor = 'cyan';
+        var ctx = canvas.getContext('2d');
+        ctx.font = 'verdana san sarif';
+        ctx.fillText('Hello World', 150, 160);
+        ctx.fillStyle()
+        document.body.appendChild(canvas);
+    </script>
+</body>
+</html>
