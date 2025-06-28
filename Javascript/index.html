@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JavaScript DOM Lessons</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    section {
+      border: 1px solid #aaa;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      background: #f4f4f4;
+    }
+    h2 {
+      color: #2c3e50;
+    }
+    canvas, svg {
+      display: block;
+      margin-top: 10px;
+    }
+    button {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <h2>1. Basic JS Console Output</h2>
+    <p>Check the console for output (Press F12 → Console tab)</p>
+    <script>
+      console.log("Hello World!");
+      var a = "B";
+      console.log(a);
+      console.log({
+        'Email': '',
+        'Groups': {},
+        'Id': 33,
+        'IsHiddenInUI': false,
+        'IsSiteAdmin': false,
+        'LoginName': 'i:0#.w|virtualdomain\\user2',
+        'PrincipalType': 1,
+        'Title': 'user2'
+      });
+    </script>
+  </section>
+
+  <section>
+    <h2>2. DOM Manipulation - Changing Text</h2>
+    <p id="paragraph">This will be changed.</p>
+    <script>
+      document.getElementById("paragraph").textContent = "Hello There";
+    </script>
+  </section>
+
+  <section>
+    <h2>3. Create and Append New Element</h2>
+    <h3>Below element added by JS:</h3>
+    <script>
+      var element = document.createElement('p');
+      element.textContent = "Hello, World";
+      document.body.appendChild(element);
+    </script>
+  </section>
+
+  <section>
+    <h2>4. Alerts, Prompts, Confirms</h2>
+    <button onclick="alert('This is an alert!')">Show Alert</button>
+    <button onclick="let age = prompt('How old are you?'); console.log(age);">Prompt Age</button>
+    <button onclick="confirm('Are you sure to delete?') && alert('Item deleted')">Show Confirm</button>
+  </section>
+
+  <section>
+    <h2>5. Canvas Example</h2>
+    <script>
+      var canvas = document.createElement('canvas');
+      canvas.width = 500;
+      canvas.height = 100;
+      var ctx = canvas.getContext('2d');
+      ctx.font = '30px Cursive';
+      ctx.fillText("Hello world!", 50, 50);
+      document.body.appendChild(canvas);
+    </script>
+  </section>
+
+  <section>
+    <h2>6. SVG Example</h2>
+    <script>
+      //createElementNS - Creates an element with the specified namespace URI and qualified name.
+      // Syntax - createElementNS(namespaceURI, qualifiedName, options)
+      var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute("width", "500");
+      svg.setAttribute("height", "60");
+      var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      text.setAttribute('x', '0');
+      text.setAttribute('y', '50');
+      text.style.fontFamily = 'Times New Roman';
+      text.style.fontSize = '50px';
+      text.textContent = 'Hello world!';
+      svg.appendChild(text);
+      document.body.appendChild(svg);
+    </script>
+  </section>
+
+  <section>
+    <h2>7. Image Insertion</h2>
+    <script>
+      var img = new Image();
+      img.src = './Assets/DomTree.jpg';
+      img.alt = 'Sample Image';
+      img.style.width = '300px';
+      document.body.appendChild(img);
+    </script>
+  </section>
+
+  <section>
+    <h2>8. DOM Access Methods</h2>
+    <div id="byId">Access by ID</div>
+    <div class="byClass">Access by Class</div>
+    <div class="byClass">Another Class Element</div>
+    <div>
+      <span>Access by Tag</span>
+    </div>
+    <script>
+      console.log("By ID:", document.getElementById("byId"));
+      console.log("By Class:", document.getElementsByClassName("byClass"));
+      console.log("By Tag:", document.getElementsByTagName("span"));
+    </script>
+  </section>
+
+  <section>
+    <h2>9. Change Style & Attributes</h2>
+    <p id="changeStyle">I will change color and attribute</p>
+    <script>
+      var el = document.getElementById("changeStyle");
+      el.style.color = "blue";
+      el.setAttribute("title", "Changed Title");
+    </script>
+  </section>
+
+  <section>
+    <h2>10. Create, Append, Replace & Remove Elements</h2>
+    <div id="container">
+      <p id="oldPara">Old Paragraph</p>
+    </div>
+    <button onclick="addElement()">Add Element</button>
+    <button onclick="replaceElement()">Replace Element</button>
+    <button onclick="removeElement()">Remove Element</button>
+    <script>
+      function addElement() {
+        const newPara = document.createElement("p");
+        newPara.textContent = "Newly Added Paragraph";
+        document.getElementById("container").appendChild(newPara);
+      }
+      function replaceElement() {
+        const newP = document.createElement("p");
+        newP.textContent = "Replaced the old paragraph";
+        const container = document.getElementById("container");
+        const oldP = document.getElementById("oldPara");
+        if (oldP) container.replaceChild(newP, oldP);
+      }
+      function removeElement() {
+        const oldP = document.getElementById("oldPara");
+        if (oldP) oldP.remove();
+      }
+    </script>
+  </section>
+
+  <section>
+    <h2>11. DOM Event Listener</h2>
+    <button id="myBtn">Click Me to Show Date</button>
+    <p id="dateDisplay"></p>
+    <script>
+      document.getElementById("myBtn").addEventListener("click", function () {
+        document.getElementById("dateDisplay").textContent = new Date();
+      });
+
+      // Extra Event Examples
+      const demoEl = document.createElement('div');
+      demoEl.textContent = "Hover or Click Me";
+      demoEl.style.border = "1px solid black";
+      demoEl.style.padding = "10px";
+      demoEl.style.marginTop = "10px";
+      demoEl.style.display = "inline-block";
+      document.body.appendChild(demoEl);
+
+      demoEl.addEventListener("mouseover", () => {
+        demoEl.style.backgroundColor = "lightyellow";
+      });
+      demoEl.addEventListener("click", () => {
+        demoEl.textContent = "You Clicked Me!";
+      });
+      demoEl.addEventListener("mouseout", () => {
+        demoEl.style.backgroundColor = "";
+        demoEl.textContent = "Hover or Click Me";
+      });
+    </script>
+  </section>
+
+</body>
+</html>
