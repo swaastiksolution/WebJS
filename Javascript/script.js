@@ -112,9 +112,41 @@ document.body.appendChild(img);
 // 2. document.getElementsByTagName(name)
 // 3. document.getElementsByClassName(name)
 
+//Changing HTML elements
+//Properties: 
+// 1. element.innerHTML =  new html content	  -  Change the inner HTML of an element
+// 2. element.attribute = new value	  -  Change the attribute value of an HTML element
+// 3. element.style.property = new style  -  Change the style of an HTML element
+
+//Method:
+// 1. element.setAttribute(attribute, value)	Change the attribute value of an HTML element
+
+//Adding and Deleting Elements:
+// 1. document.createElement(element)	Create an HTML element
+// 2. document.removeChild(element)	Remove an HTML element
+// 3. document.appendChild(element)	Add an HTML element
+// 4. document.replaceChild(new, old)	Replace an HTML element
+// 5. document.write(text)	Write into the HTML output stream
+
+//To change Style of Html: document.getElementById(id).style.property = new style
+
+//DOM Events:  When we react to element the DOM event occurs. Example: onClick()
+<script>
+    document.getElementById("myBtn").onclick = displayDate;
+</script>
+
+//DOM Event Listener: addEventListener()
+//Syntax - element.addEventListener(event, function, useCapture);
+//Example: 
+document.getElementById("myBtn").addEventListener("click", displayDate);
+
+element.addEventListener("mouseover", myFunction);
+element.addEventListener("click", mySecondFunction);
+element.addEventListener("mouseout", myThirdFunction);
+element.removeEventListener("mousemove", myFunction); //....and more
 
 
-{/* EXERCISE */}
+{/* EXERCISE 1*/}
 // User opens page 
 // Prompt asks name + age 
 // Alert: Welcome 
@@ -126,3 +158,63 @@ document.body.appendChild(img);
 // SVG remains at top with animation 
 // Image shown at bottom 
 // All actions logged in console
+
+
+{/* Lesson -3 */}
+// Example of a string variable
+var a = "This is a variable";
+
+// Types of Variables
+
+var myInteger = 12;              // Integer (number)
+var myLong = 9310141419482;      // Large number (still a 'number' in JavaScript)
+var myFloat = 5.5;               // Floating-point number (decimal)
+var myDouble = 9310141419482.22; // JavaScript doesn't distinguish float/double — all are Number type
+var myBoolean = true;           // Boolean: true
+var myBoolean2 = false;         // Boolean: false
+
+var myNotANumber = NaN;         // "Not-a-Number"
+var NaN_Example = 0 / 0;        // This also results in NaN
+
+var notDefined;                 // undefined (no value assigned yet)
+console.log(notDefined);        // undefined
+
+// Accessing a variable that hasn't been declared will throw an error:
+try {
+  console.log(aRandomVariable);  // ReferenceError
+} catch (error) {
+  console.warn("aRandomVariable is not defined");
+}
+
+var myNull = null;              // Intentionally assigned "no value"
+
+// -------------------------------
+
+// Arrays - A collection of values
+
+const fruits = ["apple", "banana", "cherry"];
+console.log(fruits[0]); // apple
+console.log(fruits.length); // 3
+
+// Objects - A collection of key-value pairs
+
+let person = {
+  name: "Muskan",
+  age: 25,
+  isDeveloper: true
+};
+
+console.log(person.name); // Muskan
+console.log(person["age"]); // 25
+
+// | Feature                 | `var`                              | `let`                  | `const`                    |
+// | ----------------------- | -----------------------------------| -----------------------| ---------------------------|
+// | **Scope**               | Function-scoped                    | Block-scoped (`{}`)    | Block-scoped (`{}`)        |
+// | **Can re-declare?**     | Yes                                | No (in the same scope) | No                         |
+// | **Can update value?**   | Yes                                | Yes                    | No (but object values can) |
+// | **Hoisting?**           | Yes (initial value is `undefined`) | Yes (but in **TDZ**)   | Yes (but in **TDZ**)       |
+// | **Use before declare?** | No error (value is `undefined`)    | Error                  | Error                      |
+
+
+{/* Exercise 2 : No Map, Filter, Find, Reduce */}
+//Find the greates age from the arry of objects
