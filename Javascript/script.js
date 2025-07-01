@@ -218,3 +218,74 @@ console.log(person["age"]); // 25
 
 {/* Exercise 2 : No Map, Filter, Find, Reduce */}
 //Find the greates age from the arry of objects
+
+
+
+{/* Lessson 4 */}
+// Strings
+// Strings in JavaScript can be enclosed in Single quotes 'hello', Double quotes "Hello" and (from ES2015, ES6) in
+// Template Literals (backticks) `hello`.
+let hello = "Hello";
+let world = 'world';
+let helloW = `Hello World`; // ES2015 / ES6
+// Strings can be created from other types using the String() function.
+let intString = String(32); // "32"
+let booleanString = String(true); // "true"
+let nullString = String(null); // "null"
+// Or, toString() can be used to convert Numbers, Booleans or Objects to Strings.
+let intStrings = (5232).toString(); // "5232"
+let booleanStrings = (false).toString(); // "false"
+let objString = ({}).toString(); // "[object Object]"
+// Strings also can be created by using String.fromCharCode method.
+String.fromCharCode(104,101,108,108,111) //"hello"
+
+//String Concatenation
+let foo = "Foo";
+let bar = "Bar";
+console.log(foo + bar); // => "FooBar"
+console.log(foo + " " + bar); // => "Foo Bar"
+foo.concat(bar) // => "FooBar"
+"a".concat("b", " ", "d") // => "ab d"
+
+
+//Reverse String - reverse the string 
+function reverseString(str) {
+ return str.split('').reverse().join('');
+}
+reverseString('string'); // "gnirts"
+
+//Split  and Join
+//split() - Splits the string into single characters.
+//Join() - joins the single characters into a string.
+
+//Using Spreading Operator
+function reverseString(str) {
+ return [...String(str)].reverse().join('');
+}
+console.log(reverseString('stackoverflow')); // "wolfrevokcats"
+console.log(reverseString(1337)); // "7331"
+console.log(reverseString([1, 2, 3])); // "3,2,1"
+
+//Custom reverse function
+function reverse(string) {
+ var strRev = "";
+ for (var i = string.length - 1; i >= 0; i--) {
+ strRev += string[i];
+ }
+ return strRev;
+}
+reverse("zebra"); // "arbez"
+
+
+{/* Exercise 3 */}
+//1. Write a function that checks if a given string is a palindrome, ignoring cases, spaces, and punctuation.
+//2. Write a function that returns the count of vowels and consonants in a given string.
+//3. Write a function that takes a sentence (a string of words separated by spaces) and returns a new string where each word is reversed, but the word order remains unchanged.
+// Requirements for question 3 - 1. The input will be a non-empty string. 2. The function should preserve the original word order. 3. Words may contain punctuation or digits.
+//  4. Extra spaces at the beginning or end should be trimmed(No need to use Trim now). 5. Multiple spaces between words should be reduced to a single space.
+// Example for question 3 - 
+// Input: "  Hello    World  "
+// Output: "olleH dlroW"
+
+// Input: "JavaScript is awesome!"
+// Output: "tpircSavaJ si !emosewa"
