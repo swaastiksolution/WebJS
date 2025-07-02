@@ -289,3 +289,70 @@ reverse("zebra"); // "arbez"
 
 // Input: "JavaScript is awesome!"
 // Output: "tpircSavaJ si !emosewa"
+
+//Access character at index in string - charAt()
+//Use charAt() to get a character at the specified index in the string.
+var string = "Hello, World!";
+console.log( string.charAt(4) ); // "o"
+//Alternatively, because strings can be treated like arrays, use the index via bracket notation.
+var string = "Hello, World!";
+console.log( string[4] ); // "o"
+//To get the character code of the character at a specified index, use charCodeAt().
+var string = "Hello, World!";
+console.log( string.charCodeAt(4) ); // 111
+
+
+//Trim WhiteSpace
+//To trim whitespace from the edges of a string, use String.prototype.trim:
+" some whitespaced string ".trim(); // "some whitespaced string"
+
+//Example
+// Stage 1 proposal
+" this is me ".trimStart(); // "this is me "
+" this is me ".trimEnd(); // " this is me"
+// Non-standard methods, but currently implemented by most engines
+" this is me ".trimLeft(); // "this is me "
+" this is me ".trimRight(); // " this is me"
+
+
+//Splitting String into an Array
+//Use .split to go from strings to an array of the split substrings:
+var s = "one, two, three, four, five"
+s.split(", "); // ["one", "two", "three", "four", "five"]
+//Use the array method .join to go back to a string:
+s.split(", ").join("--"); // "one--two--three--four--five"
+
+//Slice - use to extract substring by giving two indices
+//Example - 
+var s = "0123456789abcdefg";
+s.slice(0, 5); // "01234"
+s.slice(5, 6); // "5"
+
+
+//String Find and Replace Funtions - To search string inside a string.
+// Syntax - indexOf( searchString ) and lastIndexOf( searchString )
+var string = "Hello, World!";
+console.log( string.indexOf("o") ); // 4
+console.log( string.indexOf("foo") ); // -1
+//Similarly, lastIndexOf() will return the index of the last occurrence of searchstring or -1 if not found.
+var string = "Hello, World!";
+console.log( string.lastIndexOf("o") ); // 8
+console.log( string.lastIndexOf("foo") ); // -1
+
+//Arrays, Maps, and Reduce (Done in backend classs)
+
+//Exercise 4 - Live Word Stats Dashboard 
+// Create a webpage that allows the suer input in paragraphs and show the real time stats:
+// | Metric                          | Example Result             |
+// | ------------------------------- | ---------------------------|
+// | Total Characters                | 128                        |
+// | Total Words                     | 24                         |
+// | Unique Words                    | 19                         |
+// | Top 3 Frequent Words            | the (5), world (3), is (2) |
+// | Longest Word                    | transformation             |
+// | Shortest Word (excluding <3)    | is                         |
+// | Average Word Length             | 5.3                        |
+// | Sentence Count (end with `.?!`) | 3                          |
+
+// Stack - HTML, CSS(with clean UI and Cards and bar charts all), JS
+// Live Update on key Press
