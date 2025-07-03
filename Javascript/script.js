@@ -356,3 +356,86 @@ console.log( string.lastIndexOf("foo") ); // -1
 
 // Stack - HTML, CSS(with clean UI and Cards and bar charts all), JS
 // Live Update on key Press
+
+
+{/* Lesson - 5 */}
+
+// Funtions -  provide organized, reusable code to perform a set of actions. Everything defined within the 
+// function is not accessible by code outside the function. Only code within this scope can see the entities defined inside the scope.
+//Example - 
+function foo() {
+  var a = 'hello';
+  function bar() {
+    var b = 'world';
+    console.log(a); // => 'hello'
+    console.log(b); // => 'world'
+  }
+  console.log(a); // => 'hello'
+  console.log(b); // reference error
+}
+console.log(a); // reference error
+console.log(b);
+
+//Using a return statement - The return statement is especially useful if you do not know in which context the function will be used yet
+function firstChar(stringIn) {
+  return stringIn.charAt(0);
+}
+console.log(firstChar("Hello world"));
+
+//The return statement ends the function.
+//Currying -  Currying is the transformation of a function of n arity or arguments into a sequence of n functions taking only one argument.
+// Example - Rectangular prism can be explained by three factors - length, width, height.
+var prism = function (l, w, h) {
+  return l * w * h;
+}
+
+//Curried funtions is given below based on the above example
+function prism(l) {
+  return function (w) {
+    return function (h) {
+      return l * w * h;
+    }
+  }
+}
+
+//Named Funtions -  funtions can be named or unnamed
+
+var namedSum = function sum(a, b) { // named
+  return a + b;
+}
+var anonSum = function (a, b) { // anonymous
+  return a + b;
+}
+namedSum(1, 3);
+anonSum(1, 3);
+
+//Names of funtion are private to their own scope
+var sumTwoNumbers = function sum(a, b) {
+  return a + b;
+}
+sum(1, 3); // Will give error because sum is private to it's scope.
+
+//Named funtions are hoisted  - When using an anonymous function, the function can only be called after the line of declaration, whereas a named function can be called before declaration.
+foo();
+var foo = function () { // using an anonymous function
+  console.log('bar');
+} // Give error
+
+foo();
+function foo() { // using a named function
+  console.log('bar');
+}
+
+{/* Exercise -5  */}  //Student Analytics System
+// You have an array based on that make the analytics steps given below
+const students = [
+  { name: "Muskan", marks: [78, 85, 90], gender: "female" },
+  { name: "Arjun", marks: [65, 70, 60], gender: "male" },
+  { name: "Priya", marks: [90, 95, 100], gender: "female" },
+  { name: "Ravi", marks: [45, 50, 40], gender: "male" },
+];
+// 1. Create array with student names and their average marks
+// 2. Filter out student whose marks have average below 60.
+// 3. Sort the remaining students by average in descending order.
+// 4. Add rank based on position (1st, 2nd, etc.).
+// 5. Bonus: Use slice and splice to: Remove the lowest-ranking student.Insert a new topper at the top.
