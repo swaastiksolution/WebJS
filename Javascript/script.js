@@ -439,3 +439,11 @@ const students = [
 // 3. Sort the remaining students by average in descending order.
 // 4. Add rank based on position (1st, 2nd, etc.).
 // 5. Bonus: Use slice and splice to: Remove the lowest-ranking student.Insert a new topper at the top.
+
+{/* Exercise - 6 - Mini Game: Memory Card Matching */} 
+// Objective: Build a responsive card-matching game (like Memory or Pairs).
+// Key Challenges:
+// Use JavaScript to manage game state, moves, and timer.
+// Apply CSS animations for flip and match effects.
+// Score tracking with best score stored in localStorage.
+// Bonus: Add multiple difficulty levels (e.g., 4x4, 6x6 grid).
