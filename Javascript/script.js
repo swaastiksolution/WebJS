@@ -511,3 +511,4 @@ function User(name, email, role) {
 }
 //Use .call() inside Admin to inherit from User
 //Create an admin object and log it
+

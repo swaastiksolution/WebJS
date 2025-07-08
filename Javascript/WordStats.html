@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Word Stats Dashboard</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f8f9fa;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 2rem;
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 1rem;
+      font-size: 16px;
+    }
+
+    .stats {
+      margin-top: 2rem;
+    }
+
+    .stat-item {
+      background: #f1f3f5;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .stat-item h4 {
+      margin: 0 0 0.5rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Word Stats Analyzer</h2>
+    <textarea id="textInput" placeholder="Paste or type your paragraph here..."></textarea>
+    <div class="stats" id="statsOutput">
+      <!-- Stats will be shown here -->
+    </div>
+  </div>
+
+  <script>
+    const input = document.getElementById('textInput');
+    const output = document.getElementById('statsOutput');
+
+    input.addEventListener('input', () => {
+      const text = input.value.trim();
+
+      const words = text.split(/\s+/).filter(Boolean);
+      const charCount = text.length;
+      const wordCount = words.length;
+
+      const uniqueWords = [...new Set(words.map(w => w.toLowerCase()))];
+
+      const frequency = words.reduce((acc, word) => {
+        const lower = word.toLowerCase();
+        acc[lower] = (acc[lower] || 0) + 1;
+        return acc;
+      }, {});
+
+      const top3Words = Object.entries(frequency)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3)
+        .map(([word, count]) => `${word} (${count})`)
+        .join(', ');
+
+      const longestWord = words.reduce((a, b) => (b.length > a.length ? b : a), '');
+      const shortWords = words.filter(w => w.length >= 2);
+      const shortestWord = shortWords.reduce((a, b) => (b.length < a.length ? b : a), shortWords[0] || '');
+
+      const avgLength = wordCount > 0 ? (words.reduce((sum, w) => sum + w.length, 0) / wordCount).toFixed(2) : 0;
+
+      const sentences = text.split(/[.?!]+/).filter(s => s.trim().length > 0).length;
+
+      output.innerHTML = `
+        <div class="stat-item"><h4>Total Characters:</h4> ${charCount}</div>
+        <div class="stat-item"><h4>Total Words:</h4> ${wordCount}</div>
+        <div class="stat-item"><h4>Unique Words:</h4> ${uniqueWords.length}</div>
+        <div class="stat-item"><h4>Top 3 Frequent Words:</h4> ${top3Words}</div>
+        <div class="stat-item"><h4>Longest Word:</h4> ${longestWord}</div>
+        <div class="stat-item"><h4>Shortest Word (2+ chars):</h4> ${shortestWord}</div>
+        <div class="stat-item"><h4>Average Word Length:</h4> ${avgLength}</div>
+        <div class="stat-item"><h4>Sentence Count:</h4> ${sentences}</div>
+      `;
+    });
+  </script>
+</body>
+</html>
