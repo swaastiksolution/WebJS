@@ -447,3 +447,67 @@ const students = [
 // Apply CSS animations for flip and match effects.
 // Score tracking with best score stored in localStorage.
 // Bonus: Add multiple difficulty levels (e.g., 4x4, 6x6 grid).
+
+
+{/* Lesson-6 - Arrow funtion and this keyword */}
+// this keyword gives the context of the currentfuntion based on the object we are calling.
+// Example: 
+const user = {
+  username: 'muskan',
+  price : 1000,
+
+  message : function() {
+    console.log(`${this.username} , welcome to this site`);
+    console.log(`${this}`); 
+  }
+}
+user.message()
+user.username = 'Ram'
+user.message()
+
+//We are giving context which means values or variable, what they hold
+//=() => This is out arrow funtion that we use
+ const add = (num1, num2) => (num1 + num2) // can write without paranthesis 
+ console.log(add(3,4));
+ 
+ //If want to return object 
+ const add1 = (num1, num2) => ({username: 'Muskan'}) // can write without paranthesis 
+
+ //Now call and this
+  function setUserName(username) {
+    this.username = username
+    // console.log("called");
+    
+  }
+
+  function createUser(username, email, password) {
+    // setUserName(username)
+    setUserName.call(this, username)
+
+    this.email = email
+    this.password = password
+  }
+
+  const student = new createUser("MCA", "mca@gmail.com", "123" )
+  console.log(student);
+  
+ 
+//Exercise : 1. What will be printed and Why?
+ const machine = {
+  name: "Washing Machine",
+  start: function () {
+    setTimeout(function () {
+      console.log(`Starting: ${this.name}`);
+    }, 1000);
+  }
+};
+
+// 2. Create a constructor function User that sets name, email, and role.
+// Then create an Admin function that reuses User using .call(), and adds an isAdmin flag.
+function User(name, email, role) {
+  this.name = name;
+  this.email = email;
+  this.role = role;
+}
+//Use .call() inside Admin to inherit from User
+//Create an admin object and log it
