@@ -512,3 +512,85 @@ function User(name, email, role) {
 //Use .call() inside Admin to inherit from User
 //Create an admin object and log it
 
+
+{/* Lesson -7 - Classes , OOps and Bind*/}
+// jese he classs se ek object initialize hoga , means when the keyword is used the constructor is called automatically.
+class UserName {
+  constructor(username, email, pass) {
+    this.username = username;
+    this.email = email;
+    this.pass = pass
+  }
+
+  encryptPassword() {
+    return `${this.pass}abc`
+  }
+
+  changeUserName() {
+    return `${this.username.toUpperCase()}`
+  }
+}
+
+const name = new UserName("Muskan", "muskan@gmail.com", "123")
+console.log(name.encryptPassword());
+console.log(name.changeUserName());
+
+//Another way of doing the same thing 
+function UserName(username, email, pass) {
+   this.username = username;
+    this.email = email;
+    this.pass = pass
+}
+
+UserName.prototype.encryptPassword = function() {
+  return `${this.pass} abc`
+}
+
+UserName.prototype.changeUserName = function() {
+  return `${this.username.toUpperCase()}`
+}
+
+const intern = new UserName("Muskan" , "muskan@gmail.com", "987")
+console.log(intern.encryptPassword());
+console.log(intern.changeUserName());
+
+
+// Inheritance - the capability of one class to inherit properties from another class.
+// the passing on of genetic traits from parents to their offspring, and these offspring get all the genetic information from their parents.
+
+//Example: 
+class interns {
+  constructor(username) {
+    this.username = username
+  }
+
+  logMe() {
+    console.log(`Username is ${this.username}`);
+    
+  }
+}
+
+class Teacher extends interns {
+  constructor(username, email, pass) {
+    super(username)
+    this.email = email
+    this.pass = pass
+  }
+
+  addCourse() {
+    console.log(`A new course is added by ${this.username}`);
+    
+  }
+}
+
+const iname = new Teacher("muskan", "muskan@gmail.com", "123" )
+iname.addCourse()
+const teacher = new  interns("Tanu")
+teacher.logMe()
+
+// console.log(iname === teacher);
+// console.log(iname instanceof interns);
+// console.log(iname instanceof Teacher);
+
+//Bind - purpose of bind() is to permanently set the this context for a function
+//Example - in practice.html file.

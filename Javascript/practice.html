@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +8,8 @@
 
 <body>
     <!-- <p>Canvas</p> -->
+     <button>Button Clicked</button>
+</body>
     <script>
         // var canvas = document.createElement('canvas');
         // canvas.height = 500;
@@ -23,15 +24,33 @@
 
 
         // String of Numbers
-        function reverseString(str) {
-            return str.split('').reverse().join('');
+        // function reverseString(str) {
+        //     return str.split('').reverse().join('');
+        // }
+        // const a = reverseString('Hello'); 
+        // console.log(a);
+        // const b = "Innings"
+        // console.log(b.indexOf('n', 3))
+
+        //Bind 
+        class JavaScript {
+            constructor () {
+                this.library = "Javascript"
+                this.server = "https://localhost:300"
+
+                //requirement
+                document.querySelector('button')
+                document.addEventListener('click', this.handleClick.bind(this))
+            }
+
+            handleClick() {
+                console.log("Button Clicked");
+                console.log(this.server); 
+            }
         }
-        const a = reverseString('Hello'); 
-        console.log(a);
-        const b = "Innings"
-        console.log(b.indexOf('n', 3))
 
+        const a = new JavaScript()
+        // console.log(a);
+        
     </script>
-</body>
-
 </html>
